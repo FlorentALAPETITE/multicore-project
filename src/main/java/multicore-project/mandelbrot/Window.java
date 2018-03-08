@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import naive.NaiveServer;
+import multithread.MultithreadServer;
 
 
 
@@ -16,7 +17,7 @@ public class Window extends JFrame {
 		/**
 		 * TODO: The server has to be replaced by a one using a thread pool
 		 */
-		Server server = new NaiveServer();
+		Server server = new MultithreadServer(10);
 
 		/**
 		 * TODO: Tweak the following settings to find a difficulty that 
