@@ -13,11 +13,12 @@ import multithread.MultithreadServer;
 public class Window extends JFrame {
 
 	public static void main(String[] args) {
+
+		long startTime = System.nanoTime();
+
 		
-		/**
-		 * TODO: The server has to be replaced by a one using a thread pool
-		 */
-		Server server = new MultithreadServer(10);
+		// The number of threads in the thread pool is given as parameter
+		Server server = new MultithreadServer(360);
 
 		/**
 		 * TODO: Tweak the following settings to find a difficulty that 
@@ -25,8 +26,8 @@ public class Window extends JFrame {
 		 */
 
 		// Size of the window in pixels
-		int x_definition = 1500;
-		int y_definition = 1000;
+		int x_definition = 1200;
+		int y_definition = 800;
 		// Side of one square block, in pixels
 		int block_size = 50;
 
@@ -39,10 +40,10 @@ public class Window extends JFrame {
 		 * TODO: chose one of those lines to zoom on interesting parts. 
 		 * Ordered by expected computation time
 		 */
-		// x_min = -2.25; y_min = -1; x_max = 0.75; y_max = 1; // Full Mandelbrot set
+		x_min = -2.25; y_min = -1; x_max = 0.75; y_max = 1; // Full Mandelbrot set
 		// x_min = -1.5; y_min = -0.1; x_max = -1.2; y_max = 0.1; // Biggest circle
 		// x_min = -1.5; y_min = -0.01; x_max = -1.47; y_max = 0.01; // Replicate on the left
-		x_min = -0.65; y_min = -0.72; x_max = -0.32; y_max = -0.5; // Side of the cardioid
+		//x_min = -0.65; y_min = -0.72; x_max = -0.32; y_max = -0.5; // Side of the cardioid
 
 		// Maximal number of iterations before we consider it will diverged
 		int threshold = 1000000;		
@@ -57,7 +58,7 @@ public class Window extends JFrame {
 
 
 		// Start the window
-		final Vizualizor panel = new Vizualizor(server, x_min, y_min, x_max, y_max, x_definition, y_definition, block_size, threshold);
+		final Vizualizor panel = new Vizualizor(server, x_min, y_min, x_max, y_max, x_definition, y_definition, block_size, threshold, startTime);
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

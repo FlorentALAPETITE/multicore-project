@@ -29,6 +29,11 @@ public class Vizualizor extends JPanel implements ActionListener {
 
 	public final int threshold;
 
+	// Attributes used to get execution time
+	private long startTime;
+
+	private boolean timeAlreadyPrinted;
+
 	/**
 	 * Creates the panel
 	 * @param server reference to the server that manages the computation of the blocks
@@ -42,8 +47,12 @@ public class Vizualizor extends JPanel implements ActionListener {
 	 * @param threshold Maximal number of iterations before we consider a pixel is in the set
 	 */
 	@SuppressWarnings("unchecked")
-	public Vizualizor(Server server, double x_min, double y_min, double x_max, double y_max, int x_def, int y_def, int block_size, int threshold){
+	public Vizualizor(Server server, double x_min, double y_min, double x_max, double y_max, int x_def, int y_def, int block_size, int threshold, long st){
 		super();
+
+		startTime = st;
+		timeAlreadyPrinted = false;
+
 
 		timer=new Timer(100, this);
 		timer.start();
@@ -86,6 +95,8 @@ public class Vizualizor extends JPanel implements ActionListener {
 
 		Graphics2D g2 = (Graphics2D) g;
 
+		boolean allBlocksComputed = true;
+
 		for(int x = 0; x < x_block_nbr; x++){
 			for(int y = 0; y < y_block_nbr; y++){
 				//TODO (just to attract your attention...)
@@ -97,7 +108,18 @@ public class Vizualizor extends JPanel implements ActionListener {
 						e.printStackTrace();
 					}
 				}
+
+				else{
+					allBlocksComputed = false;
+				}
 			}
+		}
+
+		// Print the execution time in ms
+		if (allBlocksComputed && !timeAlreadyPrinted){
+			long endTime = System.nanoTime();
+			System.out.println("Execution time : " + Long.toString((endTime-startTime)/1000000) +"ms");
+			timeAlreadyPrinted = true;
 		}
 
 	}
