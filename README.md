@@ -14,12 +14,12 @@ Multicore programming project
 	* block_size = 50;
 
 #### Temps d'exécution :
-	1 thread -> 76217 ms
-	2 threads -> 43581 ms 
-	4 threads -> 35231 ms
-	12 threads -> 30043 ms
-	30 threads -> 30501 ms 
-	80 threads -> 31659 ms
+	1 thread    -> 76217 ms
+	2 threads   -> 43581 ms 
+	4 threads   -> 35231 ms
+	12 threads  -> 30043 ms
+	30 threads  -> 30501 ms 
+	80 threads  -> 30866 ms
 	120 threads -> 29466 ms
 	160 threads -> 29637 ms
 	200 threads -> 30234 ms 
@@ -28,3 +28,6 @@ Multicore programming project
 	320 threads -> 29619 ms
 	360 threads -> 29437 ms
 	384 threads -> 29549 ms
+
+#### Affichage des résultats :
+![resultats](affichage_resultats.png)
