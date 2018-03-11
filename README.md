@@ -1,8 +1,8 @@
 # multicore-project
-Multicore programming project
+Projet de programmation multicoeur - Master 1 ALMA 
 
 ## Pour exécuter le projet :
-* $ mvn clean compile exec:java
+	* $ mvn clean compile exec:java
 
 
 ## Résultats obtenus :
@@ -31,3 +31,7 @@ Multicore programming project
 
 #### Affichage des résultats :
 ![resultats](affichage_resultats.png)
+
+
+#### Analyse des résultats :
+	Le speedup atteint par rapport à une exécution avec un seul thread est de plus de 2,5. En revanche il est très rapidement atteint vers 12 threads. En instanciant plus de threads dans la thread pool, on ne gagne pas une accélération du temps d'exécution suffisamment visible. En revanche, le temps d'instanciation de l'objet Server qui contient la thread pool est bien plus élevé. De plus, l'instanciation d'un très grand nombre de threads (un par bloc par exemple) entraîne une surcharge importante de la mémoire. On peut donc en déduire qu'il existe un seuil à partir duquel il n'est plus intéressant d'instancier plus de threads dans la thread pool (ici autour de 12 threads).
